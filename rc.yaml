@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: f5-ingress
+  labels:
+    app: f5-ingress
+spec:
+  replicas: 1
+  selector:
+    app: f5-ingress
+  template:
+    metadata:
+      labels:
+        app: f5-ingress
+    spec:
+      containers:
+      - image: gcr.io/k8s-work/f5-ingress
+        imagePullPolicy: Always
+        name: f5-ingress-controller
